@@ -1,0 +1,58 @@
+[
+    {
+    "title":"iPod",
+    "price":3000,
+    "stock":12,
+    "image_url":"http://i.imgur.com/C4Dc61U.jpg",
+    "category":"MusicPlayers",
+    "company":"Apple"
+    },
+    {
+    "title":"Beats HeadPhone",
+    "price":10000,
+    "stock":15,
+    "image_url":"http://i.imgur.com/565eMam.jpg",
+    "category":"HeadPhone",
+    "company":"BeatsByDre"
+    },
+    {
+    "title":"Xbox one",
+    "price":35000,
+    "stock":4,
+    "image_url":"http://i.imgur.com/cWhzmZl.png",
+    "category":"GameConsole",
+    "company":"Microsoft"
+    },
+    {
+    "title":"iPhone 7",
+    "price":50000,
+    "stock":12,
+    "image_url":"http://i.imgur.com/ahM0ik5.jpg",
+    "category":"SmartPhone",
+    "company":"Apple"
+    },
+    {
+    "title":"PlayStation 4",
+    "price":36000,
+    "stock":7,
+    "image_url":"http://i.imgur.com/NrrDsIz.png",
+    "category":"GameConsole",
+    "company":"Sony"
+    },
+    {
+    "title":"Macbook",
+    "price":60000,
+    "stock":2,
+    "image_url":"http://i.imgur.com/ymTKo8S.jpg",
+    "category":"Laptop",
+    "company":"Apple"
+    },
+    {
+    "title":"Laser JetPrinter",
+    "price":20000,
+    "stock":8,
+    "image_url":"http://i.imgur.com/UzWZKHT.png",
+    "category":"Printer",
+    "company":"HP"    
+    }
+]
