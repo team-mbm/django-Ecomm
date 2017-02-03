@@ -16,4 +16,8 @@ class Product(models.Model):
     company = models.CharField(max_length=100, blank=False)
     def __unicode__(self):
         return self.title + " | " + self.company
-
+    def get_price(self):
+        """
+        return price of product
+        """
+        return self.price

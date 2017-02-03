@@ -1,3 +1,11 @@
 {
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/*.pyc":true,
+        "**/migrations":true
+    },
     "python.linting.pylintArgs": ["--load-plugins", "pylint_django"]
 }
