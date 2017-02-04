@@ -10,4 +10,6 @@ ROUTER.register(r'product', views.ProductViewSet)
 
 urlpatterns = [
     url(r'^', include(ROUTER.urls)),
+    url(r'^$', views.IndexView.as_view(), name='index'),
+
 ]

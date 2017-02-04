@@ -1,6 +1,7 @@
 """
 the view part of mvc model
 """
+from django.views.generic import TemplateView
 from rest_framework import viewsets
 from products.models import Product
 from products.serializers import ProductSerializer
@@ -14,3 +15,6 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     permission_classes = [IsAdminOrReadOnly]
+
+class IndexView(TemplateView):
+    template_name = "app/index.html"
