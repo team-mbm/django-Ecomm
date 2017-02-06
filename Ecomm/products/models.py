@@ -21,3 +21,5 @@ class Product(models.Model):
         return price of product
         """
         return self.price
+    def get_title(self):
+        return self.title

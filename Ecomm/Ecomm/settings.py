@@ -14,7 +14,9 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-STATICFILES_DIR = [os.path.join(BASE_DIR, 'EcommFrontend'),]
+
+STATIC_DIR = os.path.join(BASE_DIR, 'EcommFrontend')
+STATICFILES_DIRS = [STATIC_DIR,]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -41,21 +43,24 @@ INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
     'transaction.apps.TransactionConfig',
     'rest_framework',
+    'corsheaders',
 ]
 
-REST_FRAMEWORK = {
-    'PAGE_SIZE': 5
-}
+CORS_ORIGIN_ALLOW_ALL = True
 
-MIDDLEWARE = [
+MIDDLEWARE_CLASSES = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+REST_FRAMEWORK = {
+}
 
 ROOT_URLCONF = 'Ecomm.urls'
 
@@ -127,6 +132,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+
 STATIC_ROOT = os.path.join(BASE_DIR, "EcommFrontend/static")
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

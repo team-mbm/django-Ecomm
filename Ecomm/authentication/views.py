@@ -1,15 +1,51 @@
 """
 views for Customer authentication
 """
-from rest_framework import permissions, viewsets, status
+import json
+from django.contrib.auth import authenticate, login, logout
+from rest_framework import permissions, viewsets, views, status
 from rest_framework.response import Response
 from authentication.serializer import CustomerSerializer
 from authentication.permissions import IsCustomerOwner
 from authentication.models import Customer
 
+class LoginView(views.APIView):
+    """
+    view for customer login
+    """
+    def post(self, request, format=None):
+        data = json.loads(request.body)
+        email = data.get('email', None)
+        password = data.get('password', None)
+        customer = authenticate(email=email, password=password)
+        if customer is not None:
+            if customer.is_active:
+                login(request, customer)
+                serialized = CustomerSerializer(customer)
+                return Response(serialized.data)
+            else:
+                return Response({
+                    'status': 'Unauthorized',
+                    'message': 'This account has been disabled.'
+                }, status=status.HTTP_401_UNAUTHORIZED)
+        else:
+            return Response({
+                'status':'Unauthorized',
+                'message':'Username/password are invalid'
+            }, status=status.HTTP_401_UNAUTHORIZED)
+
+class LogoutView(views.APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    def post(self, request, format=None):
+        print(request)
+        logout(request)
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
+
 class CustomerViewSet(viewsets.ModelViewSet):
     """
-    customer viewset
+    customer viewset i.e customer list and info.
+    **only admin can view all customer's info(but not password since they are encrypted)
+    and customer himself can only view his own info
     """
 
     lookup_field = 'username'

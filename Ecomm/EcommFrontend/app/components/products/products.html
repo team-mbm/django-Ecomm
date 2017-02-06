@@ -1,8 +1,23 @@
-<div ng-controller="ProductsController as pctrl">
-	<div>
-		<h1>Ecomm</h1>
-	</div>
-	<div>
-		buy some apple phones
-	</div>
+<div class="single-product-area" ng-controller="ProductsController">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+                <div ng-repeat="product in products">
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-shop-product" >
+                        <div class="product-upper">
+                            <img ng-src="{{product.image_url}}" alt="" width="195px" height="243px">
+                        </div>
+                        <h2>{{product.title}}</h2>
+                        <div class="product-carousel-price">
+                            <ins>{{product.price | currency:"&#8377;"}}</ins> <del> {{1.10 * product.price |currency:"&#8377;"}}</del>
+                        </div>                
+                        <div class="product-option-shop">
+                            <a class="add_to_cart_button" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="#">Add to cart</a>
+                        </div>                       
+                    </div>
+                </div>
+                </div>
+        </div>
 </div>
+
